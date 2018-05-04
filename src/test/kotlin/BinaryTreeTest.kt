@@ -11,10 +11,10 @@ class BinaryTreeTest {
 
     @Before
     fun setUp() {
-        tree.insert(7)
-        tree.insert(12)
-        tree.insert(6)
-        tree.insert(15)
+        tree.insert(7, tree.topNode)
+        tree.insert(12, tree.topNode)
+        tree.insert(6, tree.topNode)
+        tree.insert(15, tree.topNode)
     }
 
     @Test
