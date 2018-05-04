@@ -28,25 +28,6 @@ class BinaryTree(Root: Int) {
                 insert(child, newTree)
             }
         }
-        if (topNode.left != null) {
-            println(topNode.left!!.top)
-            if (topNode.left!!.left != null) {
-                println(topNode.left!!.left!!.top)
-            }
-            if (topNode.left!!.right != null) {
-                println(topNode.left!!.right!!.top)
-            }
-        }
-        if (topNode.right != null) {
-            println(topNode.right!!.top)
-            if (topNode.right!!.left != null) {
-                println(topNode.right!!.left!!.top)
-            }
-            if (topNode.right!!.right != null) {
-                println(topNode.right!!.right!!.top)
-            }
-        }
-        println(topNode.top)
       }
 
     fun depthFirstSearch(goal: Int): Boolean {
