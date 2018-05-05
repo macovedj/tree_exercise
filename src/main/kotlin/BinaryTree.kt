@@ -11,11 +11,17 @@ class BinaryTree(Root: Int) {
     val topRoot: Int = Root
     var topNode: Node = Node(Root)
     var max: Int = Root
+    var min: Int = Root
 
     fun nodeInsert(child: Int, Tree: Node) {
+        when {
+            child > max -> max = child
+            child < min -> min = child
+        }
         if (child > topRoot) {
             max = child
         }
+
         if (child < topRoot) {
             if (Tree.left == null) {
                 Tree.left = Node(child)
@@ -70,7 +76,7 @@ class BinaryTree(Root: Int) {
 
     fun inOrderTraversal(): List<Int> {
         var values: List<Int> = listOf()
-        for (i in 0 until max + 1) {
+        for (i in min until max + 1) {
             if (depthFirstSearch(i)) {
                 values += listOf(i)
             }
