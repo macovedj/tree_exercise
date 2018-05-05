@@ -9,14 +9,14 @@ class BinaryTree(Root: Int) {
     val topRoot: Int = Root
     var topNode: Node = Node(Root)
 
-    fun insert(child: Int, Tree: Node) {
+    fun nodeInsert(child: Int, Tree: Node) {
         if (child < topRoot) {
             if (Tree.left == null) {
                 Tree.left = Node(child)
             }
             else {
                 var newTree = Tree.left!!
-                insert(child, newTree)
+                nodeInsert(child, newTree)
             }
         }
         else {
@@ -25,13 +25,16 @@ class BinaryTree(Root: Int) {
             }
             else {
                 var newTree = Tree.right!!
-                insert(child, newTree)
+                nodeInsert(child, newTree)
             }
         }
       }
 
+    fun insert(child: Int) {
+        nodeInsert(child, topNode)
+    }
 
-    fun depthFirstSearch(goal: Int, Tree: Node): Boolean {
+    fun nodeSearch(goal: Int, Tree: Node): Boolean {
         var isIn: Boolean? = null
         var currentNode: Node = Tree
         var hasLeftChild: Boolean = currentNode!!.left != null
@@ -52,7 +55,11 @@ class BinaryTree(Root: Int) {
             return isIn
         }
 
-        return depthFirstSearch(goal, nextNode!!)
+        return nodeSearch(goal, nextNode!!)
+    }
+
+    fun depthFirstSearch(goal: Int): Boolean {
+        return nodeSearch(goal, topNode)
     }
 
 

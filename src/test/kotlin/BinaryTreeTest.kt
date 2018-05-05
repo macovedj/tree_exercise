@@ -11,18 +11,18 @@ class BinaryTreeTest {
 
     @Before
     fun setUp() {
-        tree.insert(7, tree.topNode)
-        tree.insert(12, tree.topNode)
-        tree.insert(6, tree.topNode)
-        tree.insert(15, tree.topNode)
+        tree.insert(7)
+        tree.insert(12)
+        tree.insert(6)
+        tree.insert(15)
     }
 
     @Test
     fun depthFirstSearchTest() {
-        assertTrue(tree.depthFirstSearch(7, tree.topNode))
-        assertTrue(tree.depthFirstSearch(12, tree.topNode))
-        assertTrue(tree.depthFirstSearch(6, tree.topNode))
-        assertFalse(tree.depthFirstSearch(14, tree.topNode))
+        assertTrue(tree.depthFirstSearch(7))
+        assertTrue(tree.depthFirstSearch(12))
+        assertTrue(tree.depthFirstSearch(6))
+        assertFalse(tree.depthFirstSearch(14))
     }
 
     @Test
