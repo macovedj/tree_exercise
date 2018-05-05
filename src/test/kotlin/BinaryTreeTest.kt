@@ -19,10 +19,10 @@ class BinaryTreeTest {
 
     @Test
     fun depthFirstSearchTest() {
-        assertTrue(tree.depthFirstSearch(7))
-        assertTrue(tree.depthFirstSearch(12))
-        assertTrue(tree.depthFirstSearch(6))
-        assertFalse(tree.depthFirstSearch(14))
+        assertTrue(tree.depthFirstSearch(7, tree.topNode))
+        assertTrue(tree.depthFirstSearch(12, tree.topNode))
+        assertTrue(tree.depthFirstSearch(6, tree.topNode))
+        assertFalse(tree.depthFirstSearch(14, tree.topNode))
     }
 
     @Test

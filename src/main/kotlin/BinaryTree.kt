@@ -1,5 +1,5 @@
 class Node(Root: Int?) {
-    var top: Int? = Root
+    var value: Int? = Root
     var left: Node? = null
     var right: Node? = null
 }
@@ -30,12 +30,31 @@ class BinaryTree(Root: Int) {
         }
       }
 
-    fun depthFirstSearch(goal: Int): Boolean {
-        if (goal == 14) {
-            return false
+
+    fun depthFirstSearch(goal: Int, Tree: Node): Boolean {
+        var isIn: Boolean? = null
+        var currentNode: Node = Tree
+        var hasLeftChild: Boolean = currentNode!!.left != null
+        var hasRightChild: Boolean = currentNode!!.right != null
+        var nextNode: Node? = null
+        var isEnd: Boolean = !hasLeftChild && !hasRightChild
+
+        when {
+            goal == currentNode.value -> isIn = true
+            goal < currentNode.value!! && hasLeftChild -> nextNode = currentNode.left
+            goal > currentNode.value!! && hasRightChild -> nextNode = currentNode.right
+            goal < currentNode.value!! && !hasLeftChild -> isIn = false
+            goal > currentNode.value!! && !hasRightChild -> isIn = false
+            isEnd -> isIn = false
         }
-        return true
+
+        if (isIn != null) {
+            return isIn
+        }
+
+        return depthFirstSearch(goal, nextNode!!)
     }
+
 
     fun inOrderTraversal(): List<Int> {
         return listOf(6, 7, 9, 12, 15)
