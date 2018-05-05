@@ -1,3 +1,5 @@
+import java.lang.IllegalArgumentException
+
 class Node(Root: Int?) {
     var value: Int? = Root
     var left: Node? = null
@@ -8,8 +10,12 @@ class BinaryTree(Root: Int) {
 
     val topRoot: Int = Root
     var topNode: Node = Node(Root)
+    var max: Int = Root
 
     fun nodeInsert(child: Int, Tree: Node) {
+        if (child > topRoot) {
+            max = child
+        }
         if (child < topRoot) {
             if (Tree.left == null) {
                 Tree.left = Node(child)
@@ -62,9 +68,14 @@ class BinaryTree(Root: Int) {
         return nodeSearch(goal, topNode)
     }
 
-
     fun inOrderTraversal(): List<Int> {
-        return listOf(6, 7, 9, 12, 15)
+        var values: List<Int> = listOf()
+        for (i in 0 until max + 1) {
+            if (depthFirstSearch(i)) {
+                values += listOf(i)
+            }
+        }
+        return values
     }
 
 
